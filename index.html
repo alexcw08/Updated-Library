@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <script src="./scripts.js"></script>
+    <script src="./scripts.js" defer></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -13,9 +13,23 @@
       <h1 class="headerTitle">My Library</h1>
     </header>
     <main class="bodyContainer">
+      <form class="addBookForm" action="">
+        <label for="bookAuthor">Author</label>
+        <input type="text" id="bookAuthor" placeholder="F. Scott Fitzgerald" />
+        <label for="bookName">Title</label>
+        <input type="text" id="bookName" placeholder="The Great Gatsby" />
+        <label for="bookPages">Pages</label>
+        <input type="text" id="bookPages" placeholder="152" />
+        <input type="checkbox" id="readBook" />
+        <label for="readBook">Read</label>
+        <input type="checkbox" id="notReadBook" />
+        <label for="notReadBook">Not Read</label>
+        <button id="addBtn" type="button">Add</button>
+        <button id="cancelBtn" type="button">Cancel</button>
+      </form>
       <div class="noBooks">
         <h2 class="noBooksLabel">You have no books.</h2>
-        <button class="addBookBtn">Add book</button>
+        <button id="addBookBtn">Add book</button>
       </div>
     </main>
   </body>
