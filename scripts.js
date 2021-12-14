@@ -1,6 +1,8 @@
 const addBookBtn = document.querySelector("#addBookBtn");
 const noBooksLabel = document.querySelector(".noBooksLabel");
 const addBookForm = document.querySelector(".addBookForm");
+const overlay = document.querySelector("#overlay");
+const cancelBtn = document.querySelector("#cancelBtn");
 
 // Empty book library
 let bookLibrary = ["no"];
@@ -27,6 +29,16 @@ function emptyLibrary() {
 }
 
 addBookBtn.addEventListener("click", () => {
-  addBookForm.style.display = "flex";
-  addBookBtn.remove();
+  addBookForm.classList.add("active");
+  overlay.classList.add("active");
+});
+
+cancelBtn.addEventListener("click", () => {
+  addBookForm.classList.remove("active");
+  overlay.classList.remove("active");
+});
+
+overlay.addEventListener("click", () => {
+  addBookForm.classList.remove("active");
+  overlay.classList.remove("active");
 });

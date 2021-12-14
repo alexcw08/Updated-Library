@@ -13,6 +13,11 @@
       <h1 class="headerTitle">My Library</h1>
     </header>
     <main class="bodyContainer">
+      <div class="noBooks">
+        <h2 class="noBooksLabel">You have no books.</h2>
+      </div>
+      <button id="addBookBtn">Add book</button>
+      <div id="overlay"></div>
       <form class="addBookForm" action="">
         <label for="bookAuthor">Author</label>
         <input type="text" id="bookAuthor" placeholder="F. Scott Fitzgerald" />
@@ -23,18 +28,12 @@
         <div class="readSection">
           <input type="checkbox" id="readBook" />
           <label for="readBook">Read</label>
-          <input type="checkbox" id="notReadBook" />
-          <label for="notReadBook">Not Read</label>
         </div>
         <div class="formButtons">
           <button id="addBtn" type="button">Add</button>
           <button id="cancelBtn" type="button">Cancel</button>
         </div>
       </form>
-      <div class="noBooks">
-        <h2 class="noBooksLabel">You have no books.</h2>
-        <button id="addBookBtn">Add book</button>
-      </div>
     </main>
   </body>
 </html>
