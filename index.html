@@ -20,12 +20,16 @@
         <input type="text" id="bookName" placeholder="The Great Gatsby" />
         <label for="bookPages">Pages</label>
         <input type="text" id="bookPages" placeholder="152" />
-        <input type="checkbox" id="readBook" />
-        <label for="readBook">Read</label>
-        <input type="checkbox" id="notReadBook" />
-        <label for="notReadBook">Not Read</label>
-        <button id="addBtn" type="button">Add</button>
-        <button id="cancelBtn" type="button">Cancel</button>
+        <div class="readSection">
+          <input type="checkbox" id="readBook" />
+          <label for="readBook">Read</label>
+          <input type="checkbox" id="notReadBook" />
+          <label for="notReadBook">Not Read</label>
+        </div>
+        <div class="formButtons">
+          <button id="addBtn" type="button">Add</button>
+          <button id="cancelBtn" type="button">Cancel</button>
+        </div>
       </form>
       <div class="noBooks">
         <h2 class="noBooksLabel">You have no books.</h2>
