@@ -1,9 +1,10 @@
 const addBookBtn = document.querySelector("#addBookBtn");
 const noBooksLabel = document.querySelector(".noBooksLabel");
-const overlay = document.querySelector("#overlay");
 const cardContainer = document.querySelector("#card-container");
 
+const overlay = document.querySelector("#overlay");
 const addBookForm = document.querySelector(".addBookForm");
+
 // Selectors for elements inside of the form
 const addBtn = document.querySelector("#addBtn");
 const bookAuthor = document.querySelector("#bookAuthor");
@@ -26,6 +27,14 @@ function addToLibrary(newBook) {
   bookLibrary.push(newBook);
 }
 
+function openForm() {
+  addBookForm.classList.add("active");
+  overlay.classList.add("active");
+}
+function closeForm() {
+  addBookForm.classList.remove("active");
+  overlay.classList.remove("active");
+}
 // Function checking if bookLibrary is empty
 function emptyLibrary() {
   if (bookLibrary.length === 0) {
@@ -35,22 +44,19 @@ function emptyLibrary() {
   }
 }
 
-// When add book button is clicked, form is set to active and an overlay darkens the background below it
+// When add book button is clicked, open form
 addBookBtn.addEventListener("click", () => {
-  addBookForm.classList.add("active");
-  overlay.classList.add("active");
+  openForm();
 });
 
-// When cancel button is clicked, form is no longer active and overlay is disabled
+// When cancel button is clicked, close form
 cancelBtn.addEventListener("click", () => {
-  addBookForm.classList.remove("active");
-  overlay.classList.remove("active");
+  closeForm();
 });
 
-// Whenever an area on the overlay is clicked, overlay and form is disabled
+// Whenever an area on the overlay is clicked, close form
 overlay.addEventListener("click", () => {
-  addBookForm.classList.remove("active");
-  overlay.classList.remove("active");
+  closeForm();
 });
 // A new card and its children is created with the given parameters
 function createCard(title, author, pages) {
@@ -78,15 +84,9 @@ function createCard(title, author, pages) {
   newCard.append(newCardPages);
 }
 
-// When the add button is clicked, capture the values of the 3 inputs and call the create card function and pass
-// values as parameters.
+/* When the add button is clicked, capture the values of the 3 inputs and call the create card function and pass
+ values as parameters. */
 addBtn.addEventListener("click", () => {
-  let author = bookAuthor.value;
-  let title = bookTitle.value;
-  let pages = bookPages.value;
-
-  createCard(title, author, pages);
-
-  addBookForm.classList.remove("active");
-  overlay.classList.remove("active");
+  createCard(bookTitle.value, bookAuthor.value, bookPages.value);
+  closeForm();
 });
