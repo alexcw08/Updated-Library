@@ -11,20 +11,35 @@ const bookAuthor = document.querySelector("#bookAuthor");
 const bookTitle = document.querySelector("#bookName");
 const bookPages = document.querySelector("#bookPages");
 const cancelBtn = document.querySelector("#cancelBtn");
+const readBook = document.querySelector("#readBook");
 
 // Empty book library
 let bookLibrary = [];
 
-// Book constructor that takes parameters and sets their values
-function Book(title, author, pages) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-}
-
 // Add new book created with constructor to the book library
 function addToLibrary(newBook) {
-  bookLibrary.push(newBook);
+  // If the form values are not empty, create a book with those values and close the form
+  if (
+    bookTitle.checkValidity() &&
+    bookAuthor.checkValidity() &&
+    bookPages.checkValidity()
+  ) {
+    let book = {
+      title: bookTitle.value,
+      author: bookAuthor.value,
+      pages: bookPages.value,
+      read: false,
+    };
+    if (readBook.checked) {
+      book.read = true;
+    }
+    addBookForm.reset();
+    createCard(book.title, book.author, book.pages, book.read);
+    bookLibrary.push(book);
+    closeForm();
+  } else {
+    console.log("INVALID");
+  }
 }
 
 function openForm() {
@@ -34,6 +49,7 @@ function openForm() {
 function closeForm() {
   addBookForm.classList.remove("active");
   overlay.classList.remove("active");
+  addBookForm.reset();
 }
 // Function checking if bookLibrary is empty
 function emptyLibrary() {
@@ -59,14 +75,10 @@ overlay.addEventListener("click", () => {
   closeForm();
 });
 // A new card and its children is created with the given parameters
-function createCard(title, author, pages) {
+function createCard(title, author, pages, read) {
   let newCard = document.createElement("div");
   newCard.classList.add("card");
   cardContainer.append(newCard);
-
-  let newCardImage = document.createElement("div");
-  newCardImage.classList.add("card-image");
-  newCard.append(newCardImage);
 
   let newCardTitle = document.createElement("h2");
   newCardTitle.classList.add("cardTitle");
@@ -82,11 +94,18 @@ function createCard(title, author, pages) {
   newCardPages.classList.add("cardPages");
   newCardPages.innerHTML = pages;
   newCard.append(newCardPages);
+
+  if (read === false) {
+    let notRead = document.createElement("div");
+    notRead.classList.add("cardBase");
+    notRead.innerHTML = "Not read";
+    newCard.append(notRead);
+  }
 }
 
 /* When the add button is clicked, capture the values of the 3 inputs and call the create card function and pass
  values as parameters. */
 addBtn.addEventListener("click", () => {
-  createCard(bookTitle.value, bookAuthor.value, bookPages.value);
-  closeForm();
+  // createCard(bookTitle.value, bookAuthor.value, bookPages.value);
+  addToLibrary();
 });

@@ -17,29 +17,40 @@
         <h2 class="noBooksLabel">You have no books.</h2>
       </div>
       <div id="card-container">
-        <!--  TEST CARD FOR DEV
-          <div class="card">
+        <!--  TEST CARD FOR DEV-->
+        <div class="card">
           <div class="card-image"></div>
           <h2 class="cardTitle">The Great Gatsby</h2>
           <h3 class="cardAuthor">F. Scott Fitzgerald</h3>
           <h4 class="cardPages">152</h4>
-        </div> -->
+          <div class="cardBase">Not read</div>
+        </div>
       </div>
       <button id="addBookBtn">Add book</button>
       <div id="overlay"></div>
       <form class="addBookForm" action="">
         <label for="bookAuthor">Author</label>
-        <input type="text" id="bookAuthor" placeholder="F. Scott Fitzgerald" />
+        <input
+          type="text"
+          id="bookAuthor"
+          placeholder="F. Scott Fitzgerald"
+          required
+        />
         <label for="bookName">Title</label>
-        <input type="text" id="bookName" placeholder="The Great Gatsby" />
+        <input
+          type="text"
+          id="bookName"
+          placeholder="The Great Gatsby"
+          required
+        />
         <label for="bookPages">Pages</label>
-        <input type="text" id="bookPages" placeholder="152" />
+        <input type="text" id="bookPages" placeholder="152" required />
         <div class="readSection">
           <input type="checkbox" id="readBook" />
           <label for="readBook">Read</label>
         </div>
         <div class="formButtons">
-          <button id="addBtn" type="button">Add</button>
+          <input type="submit" id="addBtn" value="Add" />
           <button id="cancelBtn" type="button">Cancel</button>
         </div>
       </form>
