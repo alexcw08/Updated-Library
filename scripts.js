@@ -1,6 +1,7 @@
 const addBookBtn = document.querySelector("#addBookBtn");
 const noBooksLabel = document.querySelector(".noBooksLabel");
 const cardContainer = document.querySelector("#card-container");
+const bodyCont = document.querySelector("#bodyContainer");
 
 const overlay = document.querySelector("#overlay");
 const addBookForm = document.querySelector(".addBookForm");
@@ -15,6 +16,15 @@ const readBook = document.querySelector("#readBook");
 
 // Empty book library
 let bookLibrary = [];
+
+function pageStart() {
+  if (bookLibrary.length === 0) {
+    let noBooksLabel2 = document.createElement("h2");
+    noBooksLabel2.classList.add("noBooksLabel");
+    noBooksLabel2.innerHTML = "You have no books in your library.";
+    bodyCont.prepend(noBooksLabel2);
+  }
+}
 
 // Add new book created with constructor to the book library
 function addToLibrary(newBook) {

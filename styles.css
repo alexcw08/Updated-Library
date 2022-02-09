@@ -15,7 +15,7 @@ body {
   padding: 0.8rem;
   font-weight: 500;
 }
-.bodyContainer {
+#bodyContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,12 +30,13 @@ body {
   align-items: center;
 }
 .noBooksLabel {
+  margin: 10% 0 1% 0;
   padding: 0.5rem 0 0.5rem;
   opacity: 0.5;
   text-align: center;
 }
 #addBookBtn {
-  margin-top: 0.5rem;
+  margin-top: 1rem;
   padding: 0.65rem;
   width: fit-content;
   color: white;

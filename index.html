@@ -8,16 +8,13 @@
     <script src="./scripts.js" defer></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body onload="pageStart()">
     <header>
       <h1 class="headerTitle">My Library</h1>
     </header>
-    <main class="bodyContainer">
-      <div class="noBooks">
-        <h2 class="noBooksLabel">You have no books.</h2>
-      </div>
-      <div id="card-container">
-        <!--  TEST CARD FOR DEV-->
+    <main id="bodyContainer">
+      <!-- <div id="card-container">
+         TEST CARD FOR DEV
         <div class="card">
           <div class="card-image"></div>
           <h2 class="cardTitle">The Great Gatsby</h2>
@@ -25,7 +22,7 @@
           <h4 class="cardPages">152</h4>
           <div class="cardBase">Not read</div>
         </div>
-      </div>
+      </div> -->
       <button id="addBookBtn">Add book</button>
       <div id="overlay"></div>
       <form class="addBookForm" action="">
