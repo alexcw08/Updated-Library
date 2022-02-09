@@ -1,5 +1,5 @@
 const addBookBtn = document.querySelector("#addBookBtn");
-const noBooksLabel = document.querySelector(".noBooksLabel");
+const noBooks = document.querySelector("#noBooks");
 const cardContainer = document.querySelector("#card-container");
 const bodyCont = document.querySelector("#bodyContainer");
 
@@ -19,10 +19,7 @@ let bookLibrary = [];
 
 function pageStart() {
   if (bookLibrary.length === 0) {
-    let noBooksLabel2 = document.createElement("h2");
-    noBooksLabel2.classList.add("noBooksLabel");
-    noBooksLabel2.innerHTML = "You have no books in your library.";
-    bodyCont.prepend(noBooksLabel2);
+    addNoBooks();
   }
 }
 
@@ -43,13 +40,16 @@ function addToLibrary(newBook) {
     if (readBook.checked) {
       book.read = true;
     }
-    addBookForm.reset();
     createCard(book.title, book.author, book.pages, book.read);
+
     bookLibrary.push(book);
+    console.log(bookLibrary);
+    checkLib();
     closeForm();
   } else {
     console.log("INVALID");
   }
+  addBookForm.reset();
 }
 
 function openForm() {
@@ -60,6 +60,21 @@ function closeForm() {
   addBookForm.classList.remove("active");
   overlay.classList.remove("active");
   addBookForm.reset();
+}
+function addNoBooks() {
+  noBooks.classList.add("noBooks");
+  noBooks.classList.add("active");
+  noBooks.innerHTML = "You have no books in your library.";
+}
+
+function checkLib() {
+  if (bookLibrary.length === 1) {
+    noBooks.classList.remove("active");
+  } else if (bookLibrary === 0) {
+    noBooks.classList.add("noBooks");
+    noBooks.classList.add("active");
+    noBooks.innerHTML = "You have no books in your library.";
+  }
 }
 // Function checking if bookLibrary is empty
 function emptyLibrary() {

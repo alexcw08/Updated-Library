@@ -22,18 +22,16 @@ body {
   background-color: #ecf0f1;
   height: 100vh;
 }
+
 .noBooks {
-  margin-top: 15%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.noBooksLabel {
   margin: 10% 0 1% 0;
   padding: 0.5rem 0 0.5rem;
   opacity: 0.5;
   text-align: center;
+  transform: scale(0);
+}
+.noBooks.active {
+  transform: scale(1);
 }
 #addBookBtn {
   margin-top: 1rem;
@@ -77,8 +75,8 @@ body {
   background-color: hsl(213.66, 28.28%, 20.43%);
 }
 .addBookForm {
-  margin: 1rem 0rem;
-  width: 45%;
+  top: 25%;
+  width: 35%;
   background-color: #2c3e50;
   padding: 1rem 1rem;
   border-radius: 10px;
@@ -95,18 +93,24 @@ body {
   transform: scale(1);
 }
 .addBookForm > input[type="text"] {
-  width: 65%;
-  height: 1.5rem;
-  margin-left: 3rem;
+  width: 100%;
+  height: 2rem;
+  margin: 0.5rem 0;
 }
 .addBookForm > label {
-  margin: 0.35rem 3rem;
+  margin: 0.35rem 0;
+  font-size: 1.2rem;
+}
+.addBookTitle {
+  padding-bottom: 5px;
+  border-bottom: 2px solid white;
+  width: 100%;
 }
 .readSection {
-  margin: 0.7rem 3rem;
+  margin: 0.3rem 0;
 }
 .formButtons {
-  margin: 0.3rem 3rem;
+  margin: 0.3rem 0;
 }
 #overlay {
   position: fixed;

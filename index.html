@@ -13,19 +13,12 @@
       <h1 class="headerTitle">My Library</h1>
     </header>
     <main id="bodyContainer">
-      <!-- <div id="card-container">
-         TEST CARD FOR DEV
-        <div class="card">
-          <div class="card-image"></div>
-          <h2 class="cardTitle">The Great Gatsby</h2>
-          <h3 class="cardAuthor">F. Scott Fitzgerald</h3>
-          <h4 class="cardPages">152</h4>
-          <div class="cardBase">Not read</div>
-        </div>
-      </div> -->
+      <h2 id="noBooks"></h2>
+      <div id="card-container"></div>
       <button id="addBookBtn">Add book</button>
       <div id="overlay"></div>
       <form class="addBookForm" action="">
+        <h2 class="addBookTitle">Add book</h2>
         <label for="bookAuthor">Author</label>
         <input
           type="text"
@@ -47,7 +40,7 @@
           <label for="readBook">Read</label>
         </div>
         <div class="formButtons">
-          <input type="submit" id="addBtn" value="Add" />
+          <input type="button" id="addBtn" value="Add" />
           <button id="cancelBtn" type="button">Cancel</button>
         </div>
       </form>
