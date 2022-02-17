@@ -4,18 +4,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>My Library</title>
     <script src="./scripts.js" defer></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body onload="pageStart()">
+  <body>
+    <!-- <body onload="pageStart()"> -->
     <header>
       <h1 class="headerTitle">My Library</h1>
     </header>
     <main id="bodyContainer">
       <h2 id="noBooks"></h2>
       <div id="card-container"></div>
+      <div id="booksContainer">
+        <div class="book">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/818a0MTD3KL.jpg"
+            alt=""
+          />
+          <h3 class="bookTitle">Stay With Me</h3>
+          <h4>Jessica Cunsolo</h4>
+        </div>
+        <div class="book">
+          <img
+            src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1392224823l/17399160.jpg"
+            alt=""
+          />
+          <h3 class="bookTitle">Snow Like Ashes</h3>
+          <h4>Sara Raasch</h4>
+        </div>
+        <div class="book">
+          <img
+            src="https://images-na.ssl-images-amazon.com/images/I/81+Sf+bNqUL.jpg"
+            alt=""
+          />
+          <h3 class="bookTitle">Saga</h3>
+          <h4>Brian Vaughan</h4>
+        </div>
+      </div>
       <button id="addBookBtn">Add book</button>
+      <button id="clearLibrary">Clear</button>
       <div id="overlay"></div>
       <form class="addBookForm" action="">
         <h2 class="addBookTitle">Add book</h2>
@@ -35,6 +63,14 @@
         />
         <label for="bookPages">Pages</label>
         <input type="text" id="bookPages" placeholder="152" required />
+        <label for="imageAddress">Cover image address</label>
+        <input
+          type="url"
+          id="imageAddress"
+          placeholder="https://i0.wp.com/americanwritersmuseum.org/wp-content/uploads/2018/0..."
+          required
+          value="https://nnpbeta.wustl.edu/img/bookCovers/genericBookCover.jpg"
+        />
         <div class="readSection">
           <input type="checkbox" id="readBook" />
           <label for="readBook">Read</label>

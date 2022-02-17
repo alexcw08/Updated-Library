@@ -1,6 +1,6 @@
 const addBookBtn = document.querySelector("#addBookBtn");
 const noBooks = document.querySelector("#noBooks");
-const cardContainer = document.querySelector("#card-container");
+const booksContainer = document.querySelector("#booksContainer");
 const bodyCont = document.querySelector("#bodyContainer");
 
 const overlay = document.querySelector("#overlay");
@@ -13,14 +13,17 @@ const bookTitle = document.querySelector("#bookName");
 const bookPages = document.querySelector("#bookPages");
 const cancelBtn = document.querySelector("#cancelBtn");
 const readBook = document.querySelector("#readBook");
+const imageAddress = document.querySelector("#imageAddress");
 
 // Empty book library
 let bookLibrary = [];
 
-function pageStart() {
-  if (bookLibrary.length === 0) {
-    addNoBooks();
-  }
+if (localStorage.getItem("bookLibrary") === null) {
+  localStorage.setItem("bookLibrary", JSON.stringify([]));
+  console.log("null returned");
+} else {
+  loadBooks();
+  console.log("load function ran");
 }
 
 // Add new book created with constructor to the book library
@@ -35,21 +38,45 @@ function addToLibrary(newBook) {
       title: bookTitle.value,
       author: bookAuthor.value,
       pages: bookPages.value,
+      image: imageAddress.value,
       read: false,
     };
     if (readBook.checked) {
       book.read = true;
     }
-    createCard(book.title, book.author, book.pages, book.read);
-
+    addToStorage(book);
+    createCard(book.title, book.author, book.pages, book.read, book.image);
     bookLibrary.push(book);
-    console.log(bookLibrary);
     checkLib();
     closeForm();
   } else {
     console.log("INVALID");
+    console.log(
+      bookTitle.checkValidity(),
+      bookAuthor.checkValidity(),
+      bookPages.checkValidity()
+    );
   }
   addBookForm.reset();
+}
+function addToStorage(obj) {
+  let lib = JSON.parse(localStorage.getItem("bookLibrary"));
+  lib.push(obj);
+  localStorage.setItem("bookLibrary", JSON.stringify(lib));
+}
+function loadBooks() {
+  // getting local storage bookLibrary and parsing it into an array
+  let lib = JSON.parse(localStorage.getItem("bookLibrary"));
+  for (let i = 0; i < lib.length; i++) {
+    createCard(
+      lib[i].title,
+      lib[i].author,
+      lib[i].pages,
+      lib[i].read,
+      lib[i].image
+    );
+    console.log("address: ", lib[i].address);
+  }
 }
 
 function openForm() {
@@ -100,37 +127,26 @@ overlay.addEventListener("click", () => {
   closeForm();
 });
 // A new card and its children is created with the given parameters
-function createCard(title, author, pages, read) {
-  let newCard = document.createElement("div");
-  newCard.classList.add("card");
-  cardContainer.append(newCard);
+function createCard(title, author, pages, read, address) {
+  let newBook = document.createElement("div");
+  newBook.classList.add("book");
+  booksContainer.append(newBook);
 
-  let newCardTitle = document.createElement("h2");
-  newCardTitle.classList.add("cardTitle");
-  newCardTitle.innerHTML = title;
-  newCard.append(newCardTitle);
+  let newCover = document.createElement("img");
+  newCover.src = address;
+  newBook.append(newCover);
 
-  let newCardAuthor = document.createElement("h3");
-  newCardAuthor.classList.add("cardAuthor");
-  newCardAuthor.innerHTML = author;
-  newCard.append(newCardAuthor);
+  let newTitle = document.createElement("h3");
+  newTitle.innerHTML = title;
+  newBook.append(newTitle);
 
-  let newCardPages = document.createElement("h4");
-  newCardPages.classList.add("cardPages");
-  newCardPages.innerHTML = pages;
-  newCard.append(newCardPages);
-
-  if (read === false) {
-    let notRead = document.createElement("div");
-    notRead.classList.add("cardBase");
-    notRead.innerHTML = "Not read";
-    newCard.append(notRead);
-  }
+  let newAuthor = document.createElement("h4");
+  newAuthor.innerHTML = author;
+  newBook.append(newAuthor);
 }
 
 /* When the add button is clicked, capture the values of the 3 inputs and call the create card function and pass
  values as parameters. */
 addBtn.addEventListener("click", () => {
-  // createCard(bookTitle.value, bookAuthor.value, bookPages.value);
   addToLibrary();
 });
